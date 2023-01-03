@@ -1,0 +1,25 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise:latest
+    ports:
+      - 3000:3000
+    depends_on:
+    - influxdb
+    volumes:
+      - ./config_files/grafana.ini:/etc/grafana/grafana.ini
+      - ./config_files/grafana-provisioning/:/etc/grafana/provisioning
+
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - 8086:8086
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=supersecretstring
+      - DOCKER_INFLUXDB_INIT_ORG=uprev
+      - DOCKER_INFLUXDB_INIT_BUCKET=log-data
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=8dGNbVBTm3
+    volumes:
+      - ./influxdb_files/:/var/lib/influxdb2
+      - ./config_files/:/etc/influxdb2

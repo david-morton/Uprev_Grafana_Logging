@@ -1,0 +1,224 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P951FEA4DE68E13C5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "A/F WB-B1 (V)",
+                  "A/F WB-B2 (V)",
+                  "ACCEL PED POS 1 (V-Accel)",
+                  "ACCEL PED POS 2 (V-Accel)",
+                  "AFR WB-B1",
+                  "AFR WB-B2",
+                  "B-FUEL SCHDL (ms)",
+                  "BATTERY VOLT (Volts)",
+                  "COOLANT TEMP",
+                  "CRRCT IDL RPM (rpm)",
+                  "CRRCTD IGN TIM",
+                  "Clutch Pedal",
+                  "ENG OIL TEMP",
+                  "ENGINE RPM (rpm)",
+                  "FUEL TEMP",
+                  "Fuel Temperature",
+                  "INTAKE AIR TMP",
+                  "LT Fuel Trim B1 (%)",
+                  "LT Fuel Trim B2 (%)",
+                  "MAP SENSOR V (V)",
+                  "MAS A/F -B1 (V)",
+                  "MAS A/F -B2 (V)",
+                  "THROTTLE SENSOR 1-B1 (V)",
+                  "THROTTLE SENSOR 1-B2 (V)",
+                  "THROTTLE SENSOR 2-B1 (V)",
+                  "THROTTLE SENSOR 2-B2 (V)",
+                  "VVEL Clearance Trace",
+                  "VVEL Intake Trace",
+                  "VVEL Max",
+                  "VVEL POSITION SEN-B1 (V)",
+                  "VVEL POSITION SEN-B2 (V)",
+                  "VVEL SEN LEARN-B1 (V)",
+                  "VVEL SEN LEARN-B2 (V)",
+                  "VVEL TIM-B1 (deg)",
+                  "VVEL TIM-B2 (deg)",
+                  "VVEL Trace"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ENGINE RPM (rpm)"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 34
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P951FEA4DE68E13C5"
+          },
+          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n\n",
+          "refId": "A"
+        }
+      ],
+      "title": "UpRev Panel",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m"
+    ]
+  },
+  "timezone": "",
+  "title": "Testing the things ...",
+  "uid": "4sWeujt4k",
+  "version": 5,
+  "weekStart": ""
+}
