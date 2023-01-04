@@ -1,13 +1,11 @@
 #!/usr/bin/env ruby 
 
-# Some features we might like to include to make this actually useful ?
-#   - Play from specific time or line number
-#   - Playback speed factor for faster or slower playback
+# Future improvements ?
+#   - Seperate app for 'real time' dash where we can play back and view metrics at point in time
 
 # Include required libraries
 require 'csv'
 require 'influxdb-client'
-require 'pp'
 
 # Take the CSV file passed in as our input
 input_file = ARGV[0]
