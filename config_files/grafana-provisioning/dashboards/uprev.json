@@ -654,8 +654,8 @@
     "list": []
   },
   "time": {
-    "from": "2023-01-04T02:07:10.540Z",
-    "to": "2023-01-04T02:10:20.724Z"
+    "from": "now-30m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -671,6 +671,6 @@
   "timezone": "",
   "title": "Overview",
   "uid": "4sWeujt4k",
-  "version": 16,
+  "version": 17,
   "weekStart": ""
 }
