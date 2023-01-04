@@ -21,3 +21,7 @@ You will need the below software to run and make use of this, for referance it w
 ```./play_uprev_log.rb log_files/sample.csv```
 - Go back to Grafana in your browser and refresh ... you should now see some sample data populated. Ensure the time picker is set to the last 30 or 60 minutes say.
 - Get familiar with how to look at the data and have a play !!! https://grafana.com/docs/grafana/latest/dashboards/use-dashboards/
+
+## Image
+All going well you should have some sort of fancy dash ...  
+![Dash Image](overview_dashboard.jpg)
