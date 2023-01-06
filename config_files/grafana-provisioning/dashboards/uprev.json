@@ -110,7 +110,7 @@
             "type": "influxdb",
             "uid": "P951FEA4DE68E13C5"
           },
-          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] != \"Time\" and r[\"_field\"] != \"AFR WB-B1\" and r[\"_field\"] != \"AFR WB-B2\"\n    and r[\"_field\"] != \"ENG OIL TEMP\" and r[\"_field\"] != \"KNOCK STRENGTH\" and r[\"_field\"] != \"BATTERY VOLT (Volts)\"\n    and r[\"_field\"] != \"ENGINE RPM (rpm)\" and r[\"_field\"] != \"VEHICLE SPEED\" and r[\"_field\"] != \"HI DET\")\n",
+          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] != \"Time\" and r[\"_field\"] != \"AFR WB-B1\" and r[\"_field\"] != \"AFR WB-B2\"\n    and r[\"_field\"] != \"ENG OIL TEMP\" and r[\"_field\"] != \"KNOCK STRENGTH\" and r[\"_field\"] != \"BATTERY VOLT (Volts)\"\n    and r[\"_field\"] != \"ENGINE RPM (rpm)\" and r[\"_field\"] != \"VEHICLE SPEED\" and r[\"_field\"] != \"HI DET\"\n    and r[\"_field\"] != \"INTAKE AIR TMP\" and r[\"_field\"] != \"COOLANT TEMP\" and r[\"_field\"] != \"FUEL TEMP\"\n    and r[\"_field\"] != \"Fuel Temperature\" and r[\"_field\"] != \"TARGET AFR\")\n",
           "refId": "A"
         }
       ],
@@ -283,7 +283,24 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TARGET AFR"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 3
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 11,
@@ -310,7 +327,7 @@
             "type": "influxdb",
             "uid": "P951FEA4DE68E13C5"
           },
-          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"AFR WB-B1\" or r[\"_field\"] == \"AFR WB-B2\")\n",
+          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"AFR WB-B1\" or r[\"_field\"] == \"AFR WB-B2\" or r[\"_field\"] == \"TARGET AFR\" )\n",
           "refId": "A"
         }
       ],
@@ -415,7 +432,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -491,32 +508,7 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "ENG OIL TEMP"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -533,7 +525,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -544,7 +536,7 @@
             "type": "influxdb",
             "uid": "P951FEA4DE68E13C5"
           },
-          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"ENG OIL TEMP\")\n",
+          "query": "from(bucket: \"log-data\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_field\"] == \"ENG OIL TEMP\" or r[\"_field\"] == \"INTAKE AIR TMP\"\n  or r[\"_field\"] == \"COOLANT TEMP\" or r[\"_field\"] == \"Fuel Temperature\" or r[\"_field\"] == \"FUEL TEMP\")\n",
           "refId": "A"
         }
       ],
@@ -671,6 +663,6 @@
   "timezone": "",
   "title": "Overview",
   "uid": "4sWeujt4k",
-  "version": 17,
+  "version": 19,
   "weekStart": ""
 }

@@ -1,6 +1,7 @@
 *.sqlite
 *.bolt
 influx-configs
-!log_files/sample.csv
+!log_files/sample_dyno_runs.log
+!log_files/sample_uprev.csv
 log_files/*
 .DS_Store
