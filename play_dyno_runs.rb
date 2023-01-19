@@ -56,13 +56,16 @@ influxdb_write_api = influxdb_client.create_write_api
 # Splatter the CSV data into InfluxDB
 all_results.each do |sample_set|
     run_counter += 1
+    sample_counter = 0
     influx_name = "run_#{run_counter}"
     sample_set.each do |sample|
         time = sample[0].to_i + start_time
         speed = sample[1].to_f
         hash = { name: 'dyno_runs', fields: { influx_name => speed }, time: time }
         influxdb_write_api.write(data: hash)
+        sample_counter += 1
     end
+    puts "Uploaded run #{run_counter} with #{sample_counter -1} samples."
 end
 
 # Close connection to InfluxDB
